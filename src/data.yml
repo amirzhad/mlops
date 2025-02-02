@@ -1,0 +1,5 @@
+$schema: https://azuremlschemas.azureedge.net/latest/data.schema.json
+type: uri_folder
+name: my_data
+description: Data asset pointing to a GitHub repository
+path: https://github.com/amirzhad/mlops/blob/main/experimentation/data/diabetes-dev.csv
