@@ -8,8 +8,9 @@ import pandas as pd
 
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
+import numpy as np
 import mlflow
-
+# this function needs to be installed
 
 
 # define functions
@@ -67,6 +68,8 @@ if __name__ == "__main__":
     # add space in logs
     print("\n\n")
     print("*" * 60)
+    x = 5
+    print("code is running")
 
     # parse args
     args = parse_args()
