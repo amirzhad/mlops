@@ -1,14 +1,15 @@
 $schema: https://azuremlschemas.azureedge.net/latest/commandJob.schema.json
 code: model
-command: >-
-  python main.py
-  --diabetes-csv ${{inputs.diabetes}}
+command: >
+  python train.py
+  --training_data ${{inputs.training_data}}
+  --reg_rate ${{inputs.reg_rate}}
 inputs:
   training_data: 
-    type: uri_folder 
-    path: azureml:diabetes-dev-folder:2
+    type: uri_folder
+    path: azureml:my_data:@latest
   reg_rate: 0.01
-environment: azureml:AzureML-sklearn-0.24-ubuntu18.04-py37-cpu@latest
+environment: azureml://registries/azureml/environments/sklearn-1.5/versions/19
 compute: azureml:mlops-test1
-experiment_name: diabetes-dev-folder
+experiment_name: diabetes-experiments
 description: Train a classification model on diabetes data using a registered dataset as input.
