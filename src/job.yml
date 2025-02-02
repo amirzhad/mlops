@@ -1,11 +1,14 @@
-# Supported paths include:
-# local: './<path>/<folder>' (this will be automatically uploaded to cloud storage)
-# blob:  'wasbs://<container_name>@<account_name>.blob.core.windows.net/<path>/<folder>'
-# ADLS gen2: 'abfss://<file_system>@<account_name>.dfs.core.windows.net/<path>/<folder>'
-# Datastore: 'azureml://datastores/<data_store_name>/paths/<path>/<folder>'
-
-type: uri_folder
-name: diabetes-dev-folder
-version: 1
-description: "a simple diabetes data"
-path: azureml:diabetes-dev-folder:1
+$schema: https://azuremlschemas.azureedge.net/latest/commandJob.schema.json
+code: model
+command: >-
+  python main.py
+  --diabetes-csv ${{inputs.diabetes}}
+inputs:
+  training_data: 
+    type: uri_folder 
+    path: azureml:diabetes-dev-folder:2
+  reg_rate: 0.01
+environment: azureml:AzureML-sklearn-0.24-ubuntu18.04-py37-cpu@latest
+compute: azureml:mlops-test1
+experiment_name: diabetes-dev-folder
+description: Train a classification model on diabetes data using a registered dataset as input.
