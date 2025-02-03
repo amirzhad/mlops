@@ -7,13 +7,13 @@ jobs:
   train:
     runs-on: ubuntu-latest
     steps:
-    - name: check out repo
+    - name: Check out repo
       uses: actions/checkout@main
-    - name: azure login
+    - name: Install az ml extension
+      run: az extension add -n ml -y
+    - name: Azure login
       uses: azure/login@v1
       with:
         creds: ${{secrets.AZURE_CREDENTIALS}}
-    - name: Install az ml extension
-      uses: az extension add -n ml -y
     - name: run job
       run: az ml job create --file ../src/job_action_manual.yml --resource-group ml_test_1 --workspace-name mlops_azure_1
