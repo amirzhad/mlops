@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: check out repo
-      uses: actions/checkout@v2
+      uses: actions/checkout@main
     - name: azure login
       uses: azure/login@v1
       with:
@@ -17,4 +17,3 @@ jobs:
       uses: az extension add -n ml -y
     - name: run job
       run: az ml job create --file ../src/job_action_manual.yml --resource-group ml_test_1 --workspace-name mlops_azure_1
-
