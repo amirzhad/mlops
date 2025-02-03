@@ -1,0 +1,8 @@
+name: 'Dependency review'
+on:
+  [pull_request]:
+    branches:
+      - main
+   - name: Placeholder
+      run: |
+        echo "Will add code checks here in next challenge"
