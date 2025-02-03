@@ -7,7 +7,7 @@ command: >
 inputs:
   training_data: 
     type: uri_folder
-    path: azureml:my_data:@latest
+    path: azureml:my_github_data:latest
   reg_rate: 0.01
 environment: azureml://registries/azureml/environments/sklearn-1.5/versions/19
 compute: azureml:mlops-test1
