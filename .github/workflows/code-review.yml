@@ -2,8 +2,7 @@ name: 'Dependency review'
 
 on:
   pull_request:
-    branches:
-      - main
+    
 jobs:
   job1:
     runs-on: ubuntu-latest
@@ -11,3 +10,27 @@ jobs:
       - name: Placeholder
         run: |
           echo "Will add code checks here in next challenge. now the step will be run after each PR in main"
+          name: Code checks
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  job1:
+    name: linting
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out repo
+      uses: actions/checkout@main
+    - name: Use Python version 3.8
+      uses: actions/setup-python@v3
+      with:
+        python-version: '3.8'
+    - name: Install requirement
+      run: |
+        python -m pip install -r tests/requirements.test
+    - name: Run linting tests
+      run: | 
+        pytest tests/
