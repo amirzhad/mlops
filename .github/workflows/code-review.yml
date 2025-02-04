@@ -2,18 +2,6 @@ name: 'Dependency review'
 
 on:
   pull_request:
-    
-jobs:
-  job1:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Placeholder
-        run: |
-          echo "Will add code checks here in next challenge. now the step will be run after each PR in main"
-          name: Code checks
-
-on:
-  pull_request:
     branches:
       - main
 
