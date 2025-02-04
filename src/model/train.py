@@ -13,9 +13,9 @@ import mlflow
 
 # define functions
 def main(args):
+
+
     # TO DO: enable autologging
-    
-    
     mlflow.autolog()
 
     # read data
@@ -67,9 +67,9 @@ def parse_args():
 
 # run script
 if __name__ == "__main__":
-    # add space in logs
 
-    
+
+    # add space in logs
     print("\n\n")
     print("*" * 60)
 
