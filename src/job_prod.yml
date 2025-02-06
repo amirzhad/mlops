@@ -1,0 +1,15 @@
+$schema: https://azuremlschemas.azureedge.net/latest/commandJob.schema.json
+code: model
+command: >
+  python train.py
+  --training_data ${{inputs.training_data}}
+  --reg_rate ${{inputs.reg_rate}}
+inputs:
+  training_data: 
+    type: uri_folder
+    path: azureml:diabetes-prod-folder:latest
+  reg_rate: 0.01
+environment: azureml://registries/azureml/environments/sklearn-1.5/versions/19
+compute: azureml:cluster-prod
+experiment_name: diabetes-prod
+description: Train a classification model on prod diabetes data using a registered dataset as input.
