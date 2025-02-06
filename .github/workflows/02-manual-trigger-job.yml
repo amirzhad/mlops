@@ -6,6 +6,7 @@ on:
 jobs:
   train:
     runs-on: ubuntu-latest
+    environment: development
     steps:
     - name: Check out repo
       uses: actions/checkout@main
@@ -23,6 +24,7 @@ jobs:
   prod-train:
     needs: train
     runs-on: ubuntu-latest
+    environment: production
     steps:
     - name: Check out repo
       uses: actions/checkout@main
