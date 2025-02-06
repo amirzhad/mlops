@@ -18,9 +18,10 @@ jobs:
     - name: Debug - Liste directory contents
       run: ls -R
     - name: run job
-      run: az ml job create --file src/job_action_manual.yml --resource-group ml_test_1 --workspace-name mlops_azure_1
+      run: az ml job create --file src/job_action_manual.yml --resource-group ml_test_1 --workspace-name mlops_azure_1 --stream
   
   prod-train:
+    needs: train
     runs-on: ubuntu-latest
     steps:
     - name: Check out repo
@@ -34,4 +35,4 @@ jobs:
     - name: Debug - Liste directory contents
       run: ls -R
     - name: run job
-      run: az ml job create --file src/job_prod.yml --resource-group production --workspace-name production
+      run: az ml job create --file src/job_prod.yml --resource-group production --workspace-name production --stream
